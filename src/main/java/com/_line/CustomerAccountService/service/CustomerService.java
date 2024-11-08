@@ -1,10 +1,10 @@
 package com._line.CustomerAccountService.service;
 
 import com._line.CustomerAccountService.exceptions.BadRequestException;
-import com._line.CustomerAccountService.models.Customer;
+import com._line.CustomerAccountService.response.CustomerInfoResponse;
 
 public interface CustomerService {
 
-    Customer getCustomerInfo(Long id) throws BadRequestException;
+    CustomerInfoResponse getCustomerInfo(Long id) throws BadRequestException;
 
 }

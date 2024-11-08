@@ -19,7 +19,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public void createAndSaveTransaction(double initialCredit, Account account) {
         Transaction.builder().account(account).amount(initialCredit)
-                .timestamp(LocalDateTime.now()).build();
+                .timestamp(LocalDateTime.now()).transactionType("CREDIT")
+                .narration("Account creation deposit").build();
 
         Optional<Account> justCreatedAccount = accountRepository.findById(account.getId());
         if (justCreatedAccount.isPresent()) {

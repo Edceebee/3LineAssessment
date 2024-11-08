@@ -1,6 +1,6 @@
 package com._line.CustomerAccountService.controller;
 
-import com._line.CustomerAccountService.GlobalResponse.JSENDResponse;
+import com._line.CustomerAccountService.response.JSENDResponse;
 import com._line.CustomerAccountService.exceptions.BadRequestException;
 import com._line.CustomerAccountService.service.CustomerService;
 import lombok.RequiredArgsConstructor;

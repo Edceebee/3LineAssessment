@@ -74,16 +74,22 @@ public class DataInitializer {
                 // Create three transactions for this account
                 Transaction transaction1 = new Transaction();
                 transaction1.setAmount(200.0);
+                transaction1.setTransactionType("CREDIT");
+                transaction1.setNarration("Deposit at Bank");
                 transaction1.setTimestamp(LocalDateTime.now().minusDays(3));
                 transaction1.setAccount(account);
 
                 Transaction transaction2 = new Transaction();
                 transaction2.setAmount(150.0);
+                transaction2.setTransactionType("CREDIT");
+                transaction1.setNarration("POS transfer");
                 transaction2.setTimestamp(LocalDateTime.now().minusDays(2));
                 transaction2.setAccount(account);
 
                 Transaction transaction3 = new Transaction();
                 transaction3.setAmount(250.0);
+                transaction3.setTransactionType("CREDIT");
+                transaction1.setNarration("Salary payment");
                 transaction3.setTimestamp(LocalDateTime.now().minusDays(1));
                 transaction3.setAccount(account);
 
@@ -91,7 +97,7 @@ public class DataInitializer {
                 transactionRepository.saveAll(Arrays.asList(transaction1, transaction2, transaction3));
 
                 // Add transactions to account and save
-                account.getTransactions().addAll(Arrays.asList(transaction1, transaction2, transaction3));
+                account.setTransactions(Arrays.asList(transaction1, transaction2, transaction3));
                 accountRepository.save(account);
             }
 

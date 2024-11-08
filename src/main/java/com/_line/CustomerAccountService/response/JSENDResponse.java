@@ -1,4 +1,4 @@
-package com._line.CustomerAccountService.GlobalResponse;
+package com._line.CustomerAccountService.response;
 
 public class JSENDResponse<T> {
     private boolean status;
