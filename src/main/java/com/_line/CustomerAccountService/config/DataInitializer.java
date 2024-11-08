@@ -7,6 +7,7 @@ import com._line.CustomerAccountService.models.enums.AccountType;
 import com._line.CustomerAccountService.repository.AccountRepository;
 import com._line.CustomerAccountService.repository.CustomerRepository;
 import com._line.CustomerAccountService.repository.TransactionRepository;
+import com._line.CustomerAccountService.utils.AppUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,7 @@ import java.util.List;
 public class DataInitializer {
 
     @Bean
-    public CommandLineRunner loadData(CustomerRepository customerRepository, AccountRepository accountRepository, TransactionRepository transactionRepository) {
+    public CommandLineRunner loadData(CustomerRepository customerRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, AppUtils utils) {
         return args -> {
             // Create the list of customers
             Customer customer1 = Customer.builder()
@@ -66,7 +67,8 @@ public class DataInitializer {
                 Account account = Account.builder()
                         .accountId("ACC_" + customer.getCustomerId())
                         .accountType(AccountType.SAVINGS)
-                        .balance(1000.0) // Initial balance
+                        .accountNumber(utils.generateRandom10DigitNumber())
+                        .balance(0.0) // Initial balance
                         .customer(customer)
                         .build();
                 accountRepository.save(account);
@@ -82,14 +84,14 @@ public class DataInitializer {
                 Transaction transaction2 = new Transaction();
                 transaction2.setAmount(150.0);
                 transaction2.setTransactionType("CREDIT");
-                transaction1.setNarration("POS transfer");
+                transaction2.setNarration("POS transfer");
                 transaction2.setTimestamp(LocalDateTime.now().minusDays(2));
                 transaction2.setAccount(account);
 
                 Transaction transaction3 = new Transaction();
                 transaction3.setAmount(250.0);
                 transaction3.setTransactionType("CREDIT");
-                transaction1.setNarration("Salary payment");
+                transaction3.setNarration("Salary payment");
                 transaction3.setTimestamp(LocalDateTime.now().minusDays(1));
                 transaction3.setAccount(account);
 

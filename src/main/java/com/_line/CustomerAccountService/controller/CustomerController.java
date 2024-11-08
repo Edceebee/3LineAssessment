@@ -19,6 +19,14 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    /**
+     * Retrieves information for a specific customer by their ID.
+     *
+     * @param id The ID of the customer whose information is being retrieved.
+     * @return A {@link ResponseEntity} containing a {@link JSENDResponse} with the customer details
+     *         and a success message.
+     * @throws BadRequestException if the provided customer ID is invalid or if an error occurs while fetching the customer information.
+     */
     @GetMapping("/customer/{id}")
     public ResponseEntity<?> getCustomerInfo(@PathVariable Long id) throws BadRequestException {
         return ResponseEntity.ok(JSENDResponse.success(customerService.getCustomerInfo(id), "Customer Info fetched successfully"));

@@ -16,9 +16,13 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
+    /**
+     * REST controller for managing customer accounts.
+     * Provides endpoints to create accounts and perform account-related operations.
+     * @version 1.0
+     */
     @PostMapping("/create")
     public ResponseEntity<?> createAccount(@RequestParam String customerId, @RequestParam double initialCredit) throws BadRequestException {
         return ResponseEntity.ok(JSENDResponse.success(accountService.createAccount(customerId, initialCredit), "Current Account Created Successfully"));
     }
-
 }
