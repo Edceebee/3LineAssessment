@@ -31,14 +31,6 @@ public class CustomerServiceImpl implements CustomerService {
      * @return A {@link CustomerInfoResponse} containing customer details and the total balance.
      * @throws BadRequestException if the customer does not exist.
      */
-    /**
-     * Fetches the information of a customer, including their accounts and the total balance
-     * across all accounts by summing the transaction amounts.
-     *
-     * @param id The ID of the customer whose information is being fetched.
-     * @return A {@link CustomerInfoResponse} containing customer details and the total balance.
-     * @throws BadRequestException if the customer does not exist.
-     */
     @Override
     public CustomerInfoResponse getCustomerInfo(Long id) throws BadRequestException {
         // Fetch customer by ID
@@ -58,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         // Map each Account to an AccountInfoResponse
         List<AccountInfoResponse> accountInfoResponses = customerAccounts.stream()
-                .map(AccountMapper::toAccountInfoResponse) // Convert each Account to AccountInfoResponse
+                .map(CustomerInfoResponseMapper::toAccountInfoResponse) // Convert each Account to AccountInfoResponse
                 .collect(Collectors.toList());
 
         // Build CustomerInfoResponse with account info and summed balance

@@ -6,5 +6,4 @@ import com._line.CustomerAccountService.response.CustomerInfoResponse;
 public interface CustomerService {
 
     CustomerInfoResponse getCustomerInfo(Long id) throws BadRequestException;
-
 }

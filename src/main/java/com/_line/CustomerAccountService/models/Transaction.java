@@ -34,5 +34,9 @@ public class Transaction {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account account;
+
+    public Transaction(double amount) {
+        this.amount = amount;
+    }
 }
 

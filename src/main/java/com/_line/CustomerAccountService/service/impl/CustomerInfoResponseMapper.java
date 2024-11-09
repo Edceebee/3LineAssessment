@@ -8,7 +8,7 @@ import com._line.CustomerAccountService.response.TransactionInfo;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AccountMapper {
+public class CustomerInfoResponseMapper {
 
     // Method to convert Transaction to TransactionInfo
     public static TransactionInfo toTransactionInfo(Transaction transaction) {
@@ -24,7 +24,7 @@ public class AccountMapper {
         // Map transactions to TransactionInfo objects
         List<TransactionInfo> transactionInfoList = account.getTransactions()
                 .stream()
-                .map(AccountMapper::toTransactionInfo)
+                .map(CustomerInfoResponseMapper::toTransactionInfo)
                 .collect(Collectors.toList());
 
         // Build and return AccountInfoResponse

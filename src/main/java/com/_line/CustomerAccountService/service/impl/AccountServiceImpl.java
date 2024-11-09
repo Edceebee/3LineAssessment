@@ -29,8 +29,7 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private TransactionService transactionService;
 
-    @Autowired
-    private AppUtils utils;
+    AppUtils utils = new AppUtils();
 
     /**
      * Creates a new CURRENT account for an existing customer with an optional initial credit amount.

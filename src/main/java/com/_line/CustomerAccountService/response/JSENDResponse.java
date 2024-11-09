@@ -1,12 +1,15 @@
 package com._line.CustomerAccountService.response;
 
+import lombok.Data;
+
+@Data
 public class JSENDResponse<T> {
-    private boolean status;
+    private boolean isSuccessful;
     private String message;
     private T data;
 
-    public JSENDResponse(boolean status, T data, String message) {
-        this.status = status;
+    public JSENDResponse(boolean isSuccessful, T data, String message) {
+        this.isSuccessful = isSuccessful;
         this.data = data;
         this.message = message;
     }
@@ -21,8 +24,8 @@ public class JSENDResponse<T> {
     }
 
     // Getters and setters
-    public boolean getStatus() {
-        return status;
+    public boolean getIsSuccessful() {
+        return isSuccessful;
     }
 
     public T getData() {
