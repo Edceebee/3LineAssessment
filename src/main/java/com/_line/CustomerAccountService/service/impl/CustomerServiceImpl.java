@@ -23,6 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+
     /**
      * Fetches the information of a customer, including their accounts and the total balance
      * across all accounts by summing the transaction amounts.
